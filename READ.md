@@ -1,2 +1,2 @@
 '''
-This is a full project run terraform with cluster and github workflow
+This is a full project running terraform with cluster and github workflow
