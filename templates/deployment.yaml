@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myblog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myblog
+  template:
+    metadata:
+      labels:
+        app: myblog
+    spec:
+      containers:
+      - name: mycontainer
+        image: theoafactor/bitblog:123
+        ports:
+        - name: http
+          containerPort: 74
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 74
+          initialDelaySeconds: 10  
+          periodSeconds: 5  
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 74
+          initialDelaySeconds: 5  
+          periodSeconds: 5  
